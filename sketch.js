@@ -1,7 +1,11 @@
 function setup() {
- createCanvas (500,500);
+ createCanvas (600,600);
 }
 
-function draw() {
-  // put drawing code here
+function setup() {
+  printhelloworld();
+}
+
+function printhelloworld() {
+  console.log("Hello World");
 }
