@@ -10,6 +10,7 @@ html, body {
 
 canvas {
   display: block;
+  border: 4px solid #000000;
 }
 
 
