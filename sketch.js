@@ -1,11 +1,8 @@
 function setup() {
- createCanvas (600,600);
+ createCanvas (500,500);
 }
 
-function setup() {
-  printhelloworld();
-}
-
-function printhelloworld() {
-  console.log("Hello World");
+function draw() {
+  background(240);
+  circle(50 ,50, 50)
 }
