@@ -1,17 +1,18 @@
-// Defines player speed, positioning and size
-let player = {
-  x: 250, y: 350, size: 50, speed: 7 // Circle player moved to bottom middle area
+// INITIALISE  VARIABLES
+
+//Black and White Librarian Object
+let bwLibrarian = {
+  sprite: null,
+  xPos: 150,
+  yPos: 150,
+  
 };
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(500, 500); // Creates a canvas with a size of 500x500
 }
 
 function draw() {
-  background(999); // white canvas
-  // Draw the player
-  fill(55); // Dark gray circular player
-  noStroke();
-  circle(player.x, player.y, player.size,);
-
+  
 }
+ 
