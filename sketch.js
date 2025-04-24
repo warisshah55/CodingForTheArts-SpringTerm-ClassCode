@@ -1,6 +1,6 @@
 // Defines player speed, positioning and size
 let player = {
-  x: 120, y: 120, size: 50, speed: 7
+  x: 250, y: 350, size: 50, speed: 7 // Circle player moved to bottom middle area
 };
 
 function setup() {
