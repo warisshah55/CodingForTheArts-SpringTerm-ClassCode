@@ -22,8 +22,8 @@ function setup() {
 }
 
 function draw() {
-  background(999); // White canvas
-  displayDensity(); // Handles all content to display function
+  background(255); // White canvas
+  bwLibrarian.display(); // Handles all content to display function
 }
 
 //MY FUNCTIONS
