@@ -26,12 +26,30 @@ function setup () {
     createCanvas(400, 400);  
 
     //Initiate Objects from Character Class
-    bwLibrarian = new Character(bwLibrarianSprite
-    )
+    bwLibrarian = new Character(bwLibrarianSprite,
+                                bwLibrarianXpos,
+                                bwLibrarianYpos,
+                                bwLibrarianHitPoints,
+                                textPaddingX,
+                                textPaddingY);
+    
+ 
+    pinkLibrarian = new Character(pinkLibrarianSprite,
+                                  pinkLibrarianXpos,
+                                  pinkLibrarianYpos,
+                                  pinkLibrarianHitPoints,
+                                  textPaddingX,
+                                  textPaddingY);
+
+
+
 }
 
 function draw() {
     background(220);
+
+    bwLibrarian.display();
+    pinkLibrarian.display();
 }
 
 //CLASSES
