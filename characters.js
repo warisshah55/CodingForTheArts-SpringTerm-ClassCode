@@ -17,7 +17,6 @@ let textPaddingX = 50; // same applies to both characters
 let textPaddingY = -25; // same applies to both characters
 
 //p5 FUNCTIONS
-
 function preload() {
     bwLibrarianSprite = loadImage("librarian-bw.png"); //loads b&w sprite
     pinkLibrarianSprite = loadImage("librarian-pink.png") //loads pink sprite 
@@ -25,8 +24,16 @@ function preload() {
 
 function setup () {
     createCanvas(400, 400);  
+
+    //Initiate Objects from Character Class
+    bwLibrarian = new Character(bwLibrarianSprite
+    )
 }
 
 function draw() {
     background(220);
 }
+
+//CLASSES
+
+
