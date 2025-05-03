@@ -5,9 +5,21 @@ let bwLibrarian = {
   sprite: null, // Hold the objects sprite
   posX: 150, // x axis position
   posY: 150, // y axis position 
+  hitPoints: 10,
+  textPaddingX: 50, // textpadding on x axis (moves text to the right slightly)
+  textPaddingY: -25, // textpadding on y axis (moves it above player slightly)
 
   display: function() {
     image(this.sprite, this.posX, this.posY);
+
+    textSize(20);
+    text(this.hitPoints, this.posX + 50, this.posY - 25)
+    //   1st parameter   2nd parameter    3rd parameter
+  }, 
+
+  //Damage bwLibrarian
+  damage: function(damage) {
+    healthPoints -= damage; // healthPoints = healthPoints - damage
   }
   
 };
@@ -30,5 +42,9 @@ function draw() {
 function display() {
   image(bwLibrarian.sprite, bwLibrarian.posX, bwLibrarian.posY) // Displays object based on data inside object 
 
+}
+
+function mouseClicked() {
+  bwLibrarian.damage(2); // Magic number 
 }
 
