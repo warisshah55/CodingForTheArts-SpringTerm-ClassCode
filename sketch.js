@@ -50,6 +50,10 @@ function draw() {
   pinkLibrarian.display();
 }
 
+function mouseClicked(){
+  pinkLibrarian.damage(2); //Calls damage function for pinkLibrarian and tells it to take away 2 hitPoints
+}
+
 //CLASSES
 class Character {
   constructor(sprite, xPos, yPos, hitPoints, textPaddingX, textPaddingY) {
@@ -69,6 +73,11 @@ class Character {
     //Display hitPoints
     textSize(20);
     text(this.hitPoints, this.xPos + this.textPaddingX, this.yPos + this.textPaddingY);
+  }
+
+  damage(damage) {
+    this.hitPoints -= damage; //Takes away the value of damage from the characters hitPoints
+
   }
 }
 
