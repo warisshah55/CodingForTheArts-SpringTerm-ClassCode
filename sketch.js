@@ -9,6 +9,8 @@ let bwLibrarian = {
   textPaddingX: 50, // textpadding on x axis (moves text to the right slightly)
   textPaddingY: -25, // textpadding on y axis (moves it above player slightly)
 
+
+
   display: function() {
     image(this.sprite, this.posX, this.posY);
 

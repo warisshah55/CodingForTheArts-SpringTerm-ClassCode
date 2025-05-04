@@ -47,11 +47,31 @@ function setup () {
 
 function draw() {
     background(220);
-
-    bwLibrarian.display();
-    pinkLibrarian.display();
+ bwLibrarian.display();
+ pinkLibrarian.display();
 }
 
 //CLASSES
+class Character {
+    constructor(sprite, posX, posY, hitPoints, textPaddingX, textPaddingY) {
+        //The constructor takes a bunch of values when the code asks to create an object
 
 
+        this.sprite = sprite; // artwork
+        this.posX = posX; // x position
+        this.posY = posY; // y position
+        this.hitPoints = hitPoints; //object hitpoints
+        this.textPaddingX = textPaddingX; //padding for hitpoints text on x axis
+        this.textPaddingY = textPaddingY //padding for hitpoints text on y axis
+    }
+
+    display() {
+        //display sprite
+        image(this.sprite, this.posX, this.posY);
+
+        //display hitPoints
+        textSize(20);
+        text(this.hitPoints, this.posX + this.textPaddingX, this.posY + this.textPaddingY);
+
+    }
+}
