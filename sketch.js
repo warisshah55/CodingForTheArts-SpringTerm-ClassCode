@@ -51,7 +51,7 @@ function draw() {
 }
 
 function mouseClicked(){
-  pinkLibrarian.damage(2); //Calls damage function for pinkLibrarian and tells it to take away 2 hitPoints
+  pinkLibrarian.damage(1); //Calls damage function for pinkLibrarian and tells it to take away 2 hitPoints
 }
 
 //CLASSES
