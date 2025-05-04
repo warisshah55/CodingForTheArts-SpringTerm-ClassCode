@@ -1,36 +1,34 @@
 //INITIALISE VARIABLES
 
-//Black and White Librarian Object
+//Data for CHARACTERS
+let bwLibrarian; //Variable to contain object
+let bwLibrarianSprite; //Variable to contain sprite
+let bwLibrarianXpos = 50; //Variable for position on x axis
+let bwLibrarianYpos = 100; //Variable for position on y axis
+let bwLibrarianHitPoints = 10 //Variable for hitPoints
 
-let bwLibrarian = {
-  posX: 150, //The position on the x axis
-  posY:150, //The position on the y axis
-  hitPoints: 10,
-  textPaddingX: 50, //Moves textPadding on X axis to the right slightly + removes magic number in "text" below
-  textPaddingY: -25, //Moves textPadding on Y axis up slightly + removes magic number in "text" below
+let pinkLibrarian //Variable to contain object
+let pinkLibrarianSprite //Variable to contain sprite
+let pinkLibrarianXpos = 200; //Variable for position on x axis
+let pinkLibrarianYpos = 100; //Variable for position on y axis
+let pinkLibrarianHitPoints = 5; //Variable for hitPoints
 
-  display: function() {
-    image(this.sprite, this.posX, this.posY);
-    
-    textSize(20);
-    text(this.hitPoints, this.posX + this.textPaddingX, this.posY + this.textPaddingY) //HITPOINTS FUNCTION
-    //   1st parameter       2nd parameter                3rd parameter 
-  }
-}
+let textPaddingX = 50; //Same for both characters
+let textPaddingY = -25; //Same for both characters
 
-//BASE p5 FUNCTIONS
+//p5 FUNCTIONS
+
 function preload() {
-  bwLibrarian.sprite = loadImage("librarian-bw.png") //Loads up sprite image file
+  bwLibrarianSprite = loadImage("librarian-bw.png") //Loads b&w sprite
+  pinkLibrarianSprite = loadImage("librarian-pink.png") //Loads pink sprite
 }
-
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas (400,400);
 }
 
 function draw() {
   background(220);
-  bwLibrarian.display(); //Function that handles content to display
 }
 
 
