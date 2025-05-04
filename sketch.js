@@ -25,12 +25,52 @@ function preload() {
 
 function setup() {
   createCanvas (400,400);
+
+  //Instantiate objects from character class
+  bwLibrarian = new Character(bwLibrarianSprite,
+                              bwLibrarianXpos,
+                              bwLibrarianYpos,
+                              bwLibrarianHitPoints,
+                              textPaddingX,
+                              textPaddingY);
+
+  pinkLibrarian = new Character(pinkLibrarianSprite,
+                                pinkLibrarianXpos,
+                                pinkLibrarianYpos,
+                                pinkLibrarianHitPoints,
+                                textPaddingX,
+                                textPaddingY);
+                             
 }
 
 function draw() {
   background(220);
+
+  bwLibrarian.display();
+  pinkLibrarian.display();
 }
 
+//CLASSES
+class Character {
+  constructor(sprite, xPos, yPos, hitPoints, textPaddingX, textPaddingY) {
+    
+    this.sprite = sprite; //Artwork
+    this.xPos = xPos; //x position
+    this.yPos = yPos; //y position
+    this.hitPoints = hitPoints; //Object hitPoints
+    this.textPaddingX = textPaddingX; //Padding for hitPoints text on x axis
+    this.textPaddingY = textPaddingY; //Padding for hitPoints text on y axis
+  }
+
+  display() {
+    //Display sprite
+    image(this.sprite, this.xPos, this.yPos);
+
+    //Display hitPoints
+    textSize(20);
+    text(this.hitPoints, this.xPos + this.textPaddingX, this.yPos + this.textPaddingY);
+  }
+}
 
 
 
