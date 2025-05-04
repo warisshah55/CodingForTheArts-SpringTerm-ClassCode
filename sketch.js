@@ -1,52 +1,38 @@
-// INITIALISE  VARIABLES
+//INITIALISE VARIABLES
 
 //Black and White Librarian Object
+
 let bwLibrarian = {
-  sprite: null, // Hold the objects sprite
-  posX: 150, // x axis position
-  posY: 150, // y axis position 
+  posX: 150, //The position on the x axis
+  posY:150, //The position on the y axis
   hitPoints: 10,
-  textPaddingX: 50, // textpadding on x axis (moves text to the right slightly)
-  textPaddingY: -25, // textpadding on y axis (moves it above player slightly)
-
-
+  textPaddingX: 50, //Moves textPadding on X axis to the right slightly + removes magic number in "text" below
+  textPaddingY: -25, //Moves textPadding on Y axis up slightly + removes magic number in "text" below
 
   display: function() {
     image(this.sprite, this.posX, this.posY);
-
+    
     textSize(20);
-    text(this.hitPoints, this.posX + 50, this.posY - 25)
-    //   1st parameter   2nd parameter    3rd parameter
-  }, 
-
-  //Damage bwLibrarian
-  damage: function(damage) {
-    healthPoints -= damage; // healthPoints = healthPoints - damage
+    text(this.hitPoints, this.posX + this.textPaddingX, this.posY + this.textPaddingY) //HITPOINTS FUNCTION
+    //   1st parameter       2nd parameter                3rd parameter 
   }
-  
-};
-
-// Base loading player
-function preload() {
-  bwLibrarian.sprite = loadImage("librarian-bw.png"); // Code to access the value of sprite in the bwLibrarian object
 }
 
+//BASE p5 FUNCTIONS
+function preload() {
+  bwLibrarian.sprite = loadImage("librarian-bw.png") //Loads up sprite image file
+}
+
+
 function setup() {
-  createCanvas(500, 500); // Creates a canvas with a size of 500x500
+  createCanvas(400, 400);
 }
 
 function draw() {
-  background(255); // White canvas
-  bwLibrarian.display(); // Handles all content to display function
+  background(220);
+  bwLibrarian.display(); //Function that handles content to display
 }
 
-//MY FUNCTIONS
-function display() {
-  image(bwLibrarian.sprite, bwLibrarian.posX, bwLibrarian.posY) // Displays object based on data inside object 
 
-}
 
-function mouseClicked() {
-  bwLibrarian.damage(2); // Magic number 
-}
 
