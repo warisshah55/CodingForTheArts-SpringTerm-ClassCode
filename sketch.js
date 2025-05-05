@@ -1,86 +1,83 @@
-//INITIALISE VARIABLES
+//INITIAL VARIABLES
 
-//Data for CHARACTERS
-let bwLibrarian; //Variable to contain object
-let bwLibrarianSprite; //Variable to contain sprite
-let bwLibrarianXpos = 50; //Variable for position on x axis
-let bwLibrarianYpos = 100; //Variable for position on y axis
-let bwLibrarianHitPoints = 10 //Variable for hitPoints
+//Data for Characters
+let HeatBlast; //Variable to contain object
+let HeatBlastSprite; //Variable to contain sprite
+let HeatBlastXpos = 5; //Variable for position on x axis
+let HeatBlastYpos = 80; //Variable for position on y axis
+let HeatBlastHitPoints = 10; //Variable for hitPoints
 
-let pinkLibrarian //Variable to contain object
-let pinkLibrarianSprite //Variable to contain sprite
-let pinkLibrarianXpos = 200; //Variable for position on x axis
-let pinkLibrarianYpos = 100; //Variable for position on y axis
-let pinkLibrarianHitPoints = 5; //Variable for hitPoints
+let SlimeBall //Variable to contain object
+let SlimeBallSprite //Variable to contain sprite
+let SlimeBallXpos = 270; //Variable for position on x axis
+let SlimeBallYpos = 100; //Variable for position on y axis
+let SlimeBallHitPoints = 5; //Variable for hitPoints
 
 let textPaddingX = 50; //Same for both characters
 let textPaddingY = -25; //Same for both characters
 
+
 //p5 FUNCTIONS
 
 function preload() {
-  bwLibrarianSprite = loadImage("librarian-bw.png") //Loads b&w sprite
-  pinkLibrarianSprite = loadImage("librarian-pink.png") //Loads pink sprite
+  HeatBlastSprite = loadImage("heatblast.png"); //Load HeatBlast sprite
+  SlimeBallSprite = loadImage("slimeball.png"); //Load SlimeBall sprite
 }
 
 function setup() {
-  createCanvas (400,400);
+  createCanvas(600, 600);
 
   //Instantiate objects from character class
-  bwLibrarian = new Character(bwLibrarianSprite,
-                              bwLibrarianXpos,
-                              bwLibrarianYpos,
-                              bwLibrarianHitPoints,
-                              textPaddingX,
-                              textPaddingY);
+  HeatBlast = new Character(HeatBlastSprite,
+                            HeatBlastXpos,
+                            HeatBlastYpos,
+                            HeatBlastHitPoints,
+                            textPaddingX,
+                            textPaddingY);
 
-  pinkLibrarian = new Character(pinkLibrarianSprite,
-                                pinkLibrarianXpos,
-                                pinkLibrarianYpos,
-                                pinkLibrarianHitPoints,
-                                textPaddingX,
-                                textPaddingY);
-                             
+  SlimeBall = new Character(SlimeBallSprite,
+                            SlimeBallXpos,
+                            SlimeBallYpos,
+                            SlimeBallHitPoints,
+                            textPaddingX,
+                            textPaddingY);                          
 }
 
 function draw() {
   background(220);
 
-  bwLibrarian.display();
-  pinkLibrarian.display();
+  HeatBlast.display();
+  SlimeBall.display();
 }
 
 function mouseClicked(){
-  pinkLibrarian.damage(1); //Calls damage function for pinkLibrarian and tells it to take away 2 hitPoints
-  bwLibrarian.damage(2);
+  HeatBlast.damage(2);
+  SlimeBall.damage(1);
 }
+
 
 //CLASSES
 class Character {
   constructor(sprite, xPos, yPos, hitPoints, textPaddingX, textPaddingY) {
-    
     this.sprite = sprite; //Artwork
     this.xPos = xPos; //x position
     this.yPos = yPos; //y position
-    this.hitPoints = hitPoints; //Object hitPoints
-    this.textPaddingX = textPaddingX; //Padding for hitPoints text on x axis
-    this.textPaddingY = textPaddingY; //Padding for hitPoints text on y axis
-  }
+    this.hitPoints = hitPoints; //Objects hitpoints
+    this.textPaddingX = textPaddingX; //Padding for hitpoints text on x axis
+    this.textPaddingY = textPaddingY; //Padding for hitpoints text on y axis
+ 
+   }
 
-  display() {
-    //Display sprite
-    image(this.sprite, this.xPos, this.yPos);
+   display() {
+    //Displays sprite
+    image(this.sprite, this.xPos, this.yPos, 110, 110);
 
-    //Display hitPoints
+    //Displays HitPoints
     textSize(20);
     text(this.hitPoints, this.xPos + this.textPaddingX, this.yPos + this.textPaddingY);
-  }
+   }
 
-  damage(damage) {
-    this.hitPoints -= damage; //Takes away the value of damage from the characters hitPoints
-
-  }
+   damage(damage) {
+    this.hitPoints -= damage; //Takes away the value of damage from the character's hitPoints
+   }
 }
-
-
-
