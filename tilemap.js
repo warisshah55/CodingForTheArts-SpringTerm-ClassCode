@@ -10,7 +10,17 @@ let tileSize = 50; //How many pixels across each tile will be.
 
 
 function setup() {
-    createCanvas(500,500)
+    createCanvas(500,500);
+
+    let tileID = 0
+    for (let tileX = 0; tileX < tilesX; tileX++) {
+        tileMap[tileX] = [];
+        for (let tileY = 0; tileY < tilesY; tileY++) {
+            tileMap[tileX][tileY] = new Tile(tileX, tileY, tileSize, tileID);
+            tileID++;
+        }
+    }
+
 }
 
 
