@@ -22,10 +22,10 @@ function draw() {
 //CLASSES
 class Tile {
     constructor(tileX, tileY, tileSize, tileID) {
-        this.tileX = tileX;
-        this.tileY = tileY;
-        this.tileSize = tileSize;
-        this.tileID = tileID;
+        this.tileX = tileX; //x position of tile
+        this.tileY = tileY; //y position of tile
+        this.tileSize = tileSize; //Size of tile
+        this.tileID = tileID; //Tile ID for recognition
     }
     
 }
