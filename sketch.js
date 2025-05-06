@@ -25,7 +25,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(500, 500);
 
   //Instantiate objects from character class
   HeatBlast = new Character(HeatBlastSprite,
