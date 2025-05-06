@@ -26,6 +26,11 @@ function setup() {
 
 function draw() {
     background(0)
+    for (let tileX = 0; tileX < tilesX; tileX++) {
+        for (let tileY = 0; tileY < tilesY; tileY++) {
+            tileMap[tileX][tileY].debugGrid();
+        }
+    }
 }
 
 
