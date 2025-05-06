@@ -32,10 +32,36 @@ function draw() {
 //CLASSES
 class Tile {
     constructor(tileX, tileY, tileSize, tileID) {
-        this.tileX = tileX; //x position of tile
-        this.tileY = tileY; //y position of tile
+        this.tileX = tileX; //x position of tile in tileMap grid
+        this.tileY = tileY; //y position of tile in tileMap grid
+        this.xPos = tileX * tileSize; //Refers to the pixel position in relation to the canvas
+        this.yPos = tileY * tileSize; //Refers to the pixel position in relation to the canvas
         this.tileSize = tileSize; //Size of tile
         this.tileID = tileID; //Tile ID for recognition
+    }
+    debugGrid() {
+
+        let xPadding = 2; //Pads text so it displays within the box (x axis)
+        let yCoordinatePadding = 8; //Pads coordinate text so it displays within the box (y axis) but above ID text
+        let yIDPadding = 18; //Pads ID text so it displays within the box (y axis) and below the coordinate text
+
+        //ALL Text Settings
+        strokeWeight(1)
+        stroke("black")
+        fill("yellow")
+
+        //Displays X and Y coordinate Text
+        textSize(8)
+        text("X: " + this.tileX + ", Y: " + this.tileY, this.xPos + xPadding, this.yPos + yCoordinatePadding)
+
+        //Displays tileID text
+        textSize(10)
+        text("ID: " + this.tileID, this.xPos + xPadding, this.yPos + yIDPadding)
+
+        //Create rect around title
+        noFill();
+        stroke('yellow');
+        rect(this.xPos, this.yPos, this.tileSize, this.tileSize)
     }
     
 }
