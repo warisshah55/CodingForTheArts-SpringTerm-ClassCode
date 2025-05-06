@@ -10,7 +10,7 @@ let tileSize = 50; //How many pixels across each tile will be.
 
 
 function setup() {
-    createCanvas(500,500); //Creates a canvas that is 500x500
+    createCanvas(500,500); //Creates a canvas that is 500x500 pixels
 
     let tileID = 0 //Gives unique ID for each tile
     for (let tileX = 0; tileX < tilesX; tileX++) { 
