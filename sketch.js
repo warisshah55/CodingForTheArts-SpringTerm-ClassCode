@@ -25,7 +25,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(500, 500); //Creates a 500x500 canvas
 
   //Instantiate objects from character class
   HeatBlast = new Character(HeatBlastSprite,
@@ -44,15 +44,15 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(220); //Gives canvas a gray background
 
-  HeatBlast.display();
-  SlimeBall.display();
+  HeatBlast.display(); //Displays HeatBlast sprite
+  SlimeBall.display(); //Displays SlimeBall sprite
 }
 
 function mouseClicked(){
-  HeatBlast.damage(2);
-  SlimeBall.damage(1);
+  HeatBlast.damage(2); //Reduces HeatBlast's hitPoints by 2 everytime mouse is clicked
+  SlimeBall.damage(1); //Reduces SlimeBall's hitPoints by 1 everytime mouse is clicked
 }
 
 
@@ -73,11 +73,11 @@ class Character {
     image(this.sprite, this.xPos, this.yPos, 110, 110);
 
     //Displays HitPoints
-    textSize(20);
-    text(this.hitPoints, this.xPos + this.textPaddingX, this.yPos + this.textPaddingY);
+    textSize(20); //Sets size of the text
+    text(this.hitPoints, this.xPos + this.textPaddingX, this.yPos + this.textPaddingY); 
    }
 
-   damage(damage) {
+   damage(damage) { //Damage function
     this.hitPoints -= damage; //Takes away the value of damage from the character's hitPoints
    }
 }

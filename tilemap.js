@@ -10,13 +10,13 @@ let tileSize = 50; //How many pixels across each tile will be.
 
 
 function setup() {
-    createCanvas(500,500);
+    createCanvas(500,500); //Creates a canvas that is 500x500
 
-    let tileID = 0
-    for (let tileX = 0; tileX < tilesX; tileX++) {
-        tileMap[tileX] = [];
+    let tileID = 0 //Gives unique ID for each tile
+    for (let tileX = 0; tileX < tilesX; tileX++) { 
+        tileMap[tileX] = []; //Sub arrays for each column
         for (let tileY = 0; tileY < tilesY; tileY++) {
-            tileMap[tileX][tileY] = new Tile(tileX, tileY, tileSize, tileID);
+            tileMap[tileX][tileY] = new Tile(tileX, tileY, tileSize, tileID); //Creates a new tile at each coordinate with given ID and size
             tileID++;
         }
     }
@@ -25,12 +25,18 @@ function setup() {
 
 
 function draw() {
-    background(0)
-    for (let tileX = 0; tileX < tilesX; tileX++) {
+    background(0) //Gives the canvas a black background
+    //Loops through each tile in the grid + draws the debugging information
+    for (let tileX = 0; tileX < tilesX; tileX++) { 
         for (let tileY = 0; tileY < tilesY; tileY++) {
             tileMap[tileX][tileY].debugGrid();
         }
     }
+
+    tileMap[5][6].displayMessage() //Display message on coordinates 5,6 on tileMap
+    tileMap[0][8].displayMessage() //Display message on coordinates 0,8 on tileMap
+    tileMap[3][4].displayMessage() //Display message on coordinates 3,4 on tileMap
+    tileMap[3][0].displayMessage() //Display message on coordinates 3,0 on tileMap
 }
 
 
@@ -51,22 +57,38 @@ class Tile {
         let yIDPadding = 18; //Pads ID text so it displays within the box (y axis) and below the coordinate text
 
         //ALL Text Settings
-        strokeWeight(1)
-        stroke("black")
-        fill("yellow")
+        strokeWeight(1) //Sets thickness of line
+        stroke("black") //Sets outline colour
+        fill("yellow")  //Sets fill colour
 
         //Displays X and Y coordinate Text
-        textSize(8)
+        textSize(8) //Sets Size of the text
         text("X: " + this.tileX + ", Y: " + this.tileY, this.xPos + xPadding, this.yPos + yCoordinatePadding)
 
         //Displays tileID text
-        textSize(10)
+        textSize(10) //Sets Size of the text
         text("ID: " + this.tileID, this.xPos + xPadding, this.yPos + yIDPadding)
 
         //Create rect around title
         noFill();
-        stroke('yellow');
+        stroke('yellow'); //Sets outline colour
         rect(this.xPos, this.yPos, this.tileSize, this.tileSize)
     }
+
+    //DISPLAY text settings for the "Accessed" tiles
+  displayMessage() {
+    let xPadding = 2; //Padding for message text on x axis (Horizontally)
+    let yPadding = 40; //Padding for message text on y axis (Vertically)
+
+
+    strokeWeight(1) //Sets thickness of line
+    stroke("black") //Sets outline colour
+    fill("white") //Sets fill colour
+    textSize(10) //Sets Size of the text
+
+    text("Accessed", this.xPos + xPadding, this.yPos + yPadding) //Sets the text to say "Accessed"
+    
+    
+  }
     
 }
