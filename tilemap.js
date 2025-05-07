@@ -1,10 +1,11 @@
 //INITIALISE VARIABLES
 
 //Data for the tiles
-let tileMap = []; //This is an array that will store the tiles in later
+let tileMap = []; //This is an empty array that will store the tiles in 
 let tilesX = 10; //How many tiles there will be on the x axis (horizontally)
 let tilesY = 10; //How many tiles there will be on the y axis (vertically)
 let tileSize = 50; //How many pixels across each tile will be.
+let textures = []; //This is an empty array that will store the textures in
 
 let graphicsMap = [
 //              Y VALUES
