@@ -27,6 +27,8 @@ function preload() {
     textures[1] = loadImage("lava.png")
 }
 
+
+
    
 
 
@@ -41,7 +43,7 @@ function setup() {
         tileMap[tileX] = []; //Sub arrays for each column
         for (let tileY = 0; tileY < tilesY; tileY++) { //Starts second FOR loop 
 
-            let texture = graphicMap[tileY][tileX]; //Written in reverse order compared to the setup() and draw() function
+            let texture = graphicsMap[tileY][tileX]; //Written in reverse order compared to the setup() and draw() function
            
             tileMap[tileX][tileY] = new Tile(textures[texture], tileX, tileY, tileSize, tileID); //Creates a new tile at each coordinate with given ID and size
            
@@ -57,7 +59,9 @@ function draw() {
     //Loops through each tile in the grid + draws the debugging information
     for (let tileX = 0; tileX < tilesX; tileX++) { 
         for (let tileY = 0; tileY < tilesY; tileY++) {
-            tileMap[tileX][tileY].debugGrid();
+        
+            tileMap[tileX][tileY].display();
+            
         }
     }
 
@@ -70,7 +74,8 @@ function draw() {
 
 //CLASSES
 class Tile {
-    constructor(tileX, tileY, tileSize, tileID) {
+    constructor(texture, tileX, tileY, tileSize, tileID) {
+        this.texture = texture; //Added texture to class
         this.tileX = tileX; //x position of tile in tileMap grid
         this.tileY = tileY; //y position of tile in tileMap grid
         this.xPos = tileX * tileSize; //Refers to the pixel position in relation to the canvas
@@ -78,6 +83,12 @@ class Tile {
         this.tileSize = tileSize; //Size of tile
         this.tileID = tileID; //Tile ID for recognition
     }
+
+    display() {
+        image(this.texture, this.xPos, this.yPos, this.tileSize, this.tileSize)
+    }
+    
+    
     debugGrid() {
 
         let xPadding = 2; //Pads text so it displays within the box (x axis)
@@ -103,20 +114,6 @@ class Tile {
         rect(this.xPos, this.yPos, this.tileSize, this.tileSize)
     }
 
-    //DISPLAY text settings for the "Accessed" tiles
-  displayMessage() {
-    let xPadding = 2; //Padding for message text on x axis (Horizontally)
-    let yPadding = 40; //Padding for message text on y axis (Vertically)
-
-
-    strokeWeight(1) //Sets thickness of line
-    stroke("black") //Sets outline colour
-    fill("white") //Sets fill colour
-    textSize(10) //Sets Size of the text
-
-    text("Accessed", this.xPos + xPadding, this.yPos + yPadding) //Sets the text to say "Accessed"
-    
-    
-  }
+ 
     
 }
