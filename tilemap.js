@@ -5,30 +5,9 @@ let tileMap = []; //This is an array that will store the tiles in later
 let tilesX = 10; //How many tiles there will be on the x axis (horizontally)
 let tilesY = 10; //How many tiles there will be on the y axis (vertically)
 let tileSize = 50; //How many pixels across each tile will be.
-let textures = []; //This is an array which will store the textures in later
 
 
-//Data for Graphics Map
-let graphicsMap = [
-//             Y VALUES
-//   0  1  2  3  4  5  6  7  8  9
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 0
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 1
-    {0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, // 2
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 3
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 4    X VALUES
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 5
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 6
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 7
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // 8
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}  // 9
-]
    
- 
-
-
-
-
 
 
 
