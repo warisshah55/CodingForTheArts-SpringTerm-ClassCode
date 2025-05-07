@@ -22,6 +22,11 @@ let graphicsMap = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  // 9
 ]
 
+function preload() {
+    textures[0] = loadImage("grassblock.png")
+    textures[1] = loadImage("lava.png")
+}
+
    
 
 
@@ -30,11 +35,16 @@ let graphicsMap = [
 function setup() {
     createCanvas(500,500); //Creates a canvas that is 500x500 pixels
 
+    //Creates all tiles
     let tileID = 0 //Gives unique ID for each tile
-    for (let tileX = 0; tileX < tilesX; tileX++) { 
+    for (let tileX = 0; tileX < tilesX; tileX++) {  //Starts for loop
         tileMap[tileX] = []; //Sub arrays for each column
-        for (let tileY = 0; tileY < tilesY; tileY++) {
-            tileMap[tileX][tileY] = new Tile(tileX, tileY, tileSize, tileID); //Creates a new tile at each coordinate with given ID and size
+        for (let tileY = 0; tileY < tilesY; tileY++) { //Starts second FOR loop 
+
+            let texture = graphicMap[tileY][tileX]; //Written in reverse order compared to the setup() and draw() function
+           
+            tileMap[tileX][tileY] = new Tile(textures[texture], tileX, tileY, tileSize, tileID); //Creates a new tile at each coordinate with given ID and size
+           
             tileID++;
         }
     }
