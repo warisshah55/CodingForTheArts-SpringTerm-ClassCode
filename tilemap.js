@@ -137,3 +137,34 @@ class Tile {
   
     
 }
+
+class Player{
+    constructor(sprite, startX, startY, tileSize, tilesRules) {
+        //PLAYER SPRITES
+        this.sprite = sprite;
+
+        //TILE POSITION DATA
+        this.tileX = startX,
+        this.tileY = startY,
+
+        //PIXEL POSITION DATA
+        this.xPos = startX * tileSize;
+        this.yPos = startY * tileSize;
+
+        //DIRECTION PLAYER WANTS TO MOVE
+        this.dirX = 0;
+        this.dirY = 0;
+
+        //PLAYER'S TARGET PIXEL POSITION
+        this.tx = this.xPos;
+        this.ty = this.yPos;
+
+        //MOVEMENT
+        this.isMoving = false;
+        this.speed = 5;
+
+        //TILE DATA
+        this.tileSize = tileSize;
+        this.tilesRules = tilesRules;
+    }
+}
