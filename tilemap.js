@@ -13,6 +13,7 @@ let tilesY = 10; //How many tiles there will be on the y axis (vertically)
 let tileSize = 50; //How many pixels across each tile will be.
 let textures = []; //This is an empty array that will store the textures in
 
+
 let graphicsMap = [
 //              Y VALUES
 //   0  1  2  3  4  5  6  7  8  9
@@ -60,8 +61,6 @@ function preload() {
    
 
 
-
-
 function setup() {
     createCanvas(500,500); //Creates a canvas that is 500x500 pixels
 
@@ -84,6 +83,7 @@ function setup() {
 }
 
 
+
 function draw() {
     background(0) //Gives the canvas a black background
     //Loops through each tile in the grid + draws the debugging information
@@ -103,6 +103,8 @@ function draw() {
     tileMap[3][4].displayMessage() //Display message on coordinates 3,4 on tileMap
     tileMap[3][0].displayMessage() //Display message on coordinates 3,0 on tileMap
 }
+
+
 
 
 //CLASSES
@@ -183,5 +185,42 @@ class Player{
 
     display(){
         image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize);
+    }
+
+
+    setDirection() {
+        let up = 87; //W
+        let down = 83 //S
+        let left = 65; //A
+        let right = 68; //D
+
+        if (!this.isMoving) { //CHECKS IF PLAYER IS MOVING, IF NOT, CODE BELOW RUNS.
+
+            if (keyIsDown(up)) {
+                this.dirX = 0;
+                this.dirY = -1;
+            }
+
+            if(keyIsDown(down)) {
+                this.dirX = 0;
+                this.dirY = 1;
+            }
+
+            if(keyIsDown(left)) {
+                this.dirX = -1;
+                this.dirY = 0;
+            }
+
+            if(keyIsDown(right)) {
+                this.dirX = 1;
+                this.dirY = 0;
+            }
+
+            this.checkTargetTile()
+
+        }
+            
+        
+
     }
 }
