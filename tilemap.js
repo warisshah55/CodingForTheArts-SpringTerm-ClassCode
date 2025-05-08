@@ -1,6 +1,12 @@
-//INITIALISE VARIABLES
 
-//Data for the tiles
+
+
+//INITIALISE PLAYER VARIABLES
+let player;
+let playerSprite;
+let playerSpeed = 5;
+
+//INITIALISE TILEMAP VARIABLES
 let tileMap = []; //This is an empty array that will store the tiles in 
 let tilesX = 10; //How many tiles there will be on the x axis (horizontally)
 let tilesY = 10; //How many tiles there will be on the y axis (vertically)
@@ -44,6 +50,9 @@ console.log(graphicsMap[2][3]);
 function preload() {
     textures[0] = loadImage("grassblock.png")
     textures[1] = loadImage("lava.png")
+
+
+    playerSprite = loadImage("heatblast.png")
 }
 
 
@@ -69,6 +78,8 @@ function setup() {
             tileID++;
         }
     }
+    //Create Player
+    player = new Player(playerSprite, 3, 3, tileSize, tilesRules);
 
 }
 
@@ -84,6 +95,8 @@ function draw() {
             
         }
     }
+
+    player.display("heatblast.png");
 
     tileMap[5][6].displayMessage() //Display message on coordinates 5,6 on tileMap
     tileMap[0][8].displayMessage() //Display message on coordinates 0,8 on tileMap
@@ -139,7 +152,7 @@ class Tile {
 }
 
 class Player{
-    constructor(sprite, startX, startY, tileSize, tilesRules) {
+    constructor(sprite, startX, startY, tileSize, tileRules) {
         //PLAYER SPRITES
         this.sprite = sprite;
 
@@ -165,6 +178,10 @@ class Player{
 
         //TILE DATA
         this.tileSize = tileSize;
-        this.tilesRules = tilesRules;
+        this.tilesRules = tileRules;
+    }
+
+    display(){
+        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize);
     }
 }
