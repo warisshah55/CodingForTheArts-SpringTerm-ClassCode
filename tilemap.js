@@ -1,6 +1,3 @@
-
-
-
 //INITIALISE PLAYER VARIABLES
 let player;
 let playerSprite;
@@ -27,7 +24,6 @@ let graphicsMap = [
     [0, 0, 0, 0, 0, 0, 0, 1, 0, 0], // 7
     [0, 0, 0, 0, 0, 0, 0, 1, 0, 0], // 8
     [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]  // 9
-
 ]
 
 let tilesRules = [
@@ -43,23 +39,16 @@ let tilesRules = [
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 0], // 7
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 0], // 8
 [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]  // 9
-
 ]
 
 console.log(graphicsMap[2][3]);
 
 function preload() {
-    textures[0] = loadImage("grassblock.png")
-    textures[1] = loadImage("lava.png")
+    textures[0] = loadImage("grassblock.png") //Loads "grassblock.png" tile
+    textures[1] = loadImage("lava.png") //Loads "lava.png", the obstruction
 
-
-    playerSprite = loadImage("heatblast.png")
+    playerSprite = loadImage("heatblast.png") //Loads the "heatblast.png" sprite
 }
-
-
-
-   
-
 
 function setup() {
     createCanvas(500,500); //Creates a canvas that is 500x500 pixels
@@ -77,188 +66,147 @@ function setup() {
             tileID++;
         }
     }
-    //Create Player
-    player = new Player(playerSprite, 3, 3, tileSize, tilesRules);
-
+    
+    player = new Player(playerSprite, 3, 3, tileSize, tilesRules); //Creates the player
 }
-
-
 
 function draw() {
     background(0) //Gives the canvas a black background
-    //Loops through each tile in the grid + draws the debugging information
+
     for (let tileX = 0; tileX < tilesX; tileX++) { 
         for (let tileY = 0; tileY < tilesY; tileY++) {
-        
             tileMap[tileX][tileY].display();
-           
-            
         }
     }
 
-    player.display("heatblast.png");
+    player.setDirection(); //Set direction based on WASD keys
+    player.move(); //Moves player where allowed
+    player.display(); //Displays the sprite
 
-    tileMap[5][6].displayMessage() //Display message on coordinates 5,6 on tileMap
-    tileMap[0][8].displayMessage() //Display message on coordinates 0,8 on tileMap
-    tileMap[3][4].displayMessage() //Display message on coordinates 3,4 on tileMap
-    tileMap[3][0].displayMessage() //Display message on coordinates 3,0 on tileMap
+    tileMap[5][6].displayMessage();
+    tileMap[0][8].displayMessage();
+    tileMap[3][4].displayMessage();
+    tileMap[3][0].displayMessage();
 }
-
-
-
 
 //CLASSES
 class Tile {
     constructor(texture, tileX, tileY, tileSize, tileID) {
-        this.texture = texture; //Added texture to class
-        this.tileX = tileX; //x position of tile in tileMap grid
-        this.tileY = tileY; //y position of tile in tileMap grid
-        this.xPos = tileX * tileSize; //Refers to the pixel position in relation to the canvas
-        this.yPos = tileY * tileSize; //Refers to the pixel position in relation to the canvas
-        this.tileSize = tileSize; //Size of tile
-        this.tileID = tileID; //Tile ID for recognition
+        this.texture = texture; //The texture to be used for the tiles
+        this.tileX = tileX; //Horizontal index of tile on the grid
+        this.tileY = tileY; //Vertical index of tile on the grid
+        this.xPos = tileX * tileSize; //X positions of tiles on screen
+        this.yPos = tileY * tileSize; //Y position of tiles on screen
+        this.tileSize = tileSize; //Width and height of the tile
+        this.tileID = tileID; //Unique ID for tile (to distinguish)
     }
 
     display() {
-        image(this.texture, this.xPos, this.yPos, this.tileSize, this.tileSize)
+        image(this.texture, this.xPos, this.yPos, this.tileSize, this.tileSize); //Displays heatblast sprite
     }
-    
-    
+
     debugGrid() {
 
         let xPadding = 2; //Pads text so it displays within the box (x axis)
-        let yCoordinatePadding = 8; //Pads coordinate text so it displays within the box (y axis) but above ID text
-        let yIDPadding = 18; //Pads ID text so it displays within the box (y axis) and below the coordinate text
+        let yCoordinatePadding = 8; //Y coordinate padding so it displays within box but above ID text
+        let yIDPadding = 18; //Pads ID text so it displays within the box (y axis) and below coordinate text
 
-        //ALL Text Settings
-        strokeWeight(1) //Sets thickness of line
-        stroke("black") //Sets outline colour
-        fill("yellow")  //Sets fill colour
+        //Text settings
+        strokeWeight(1);
+        stroke("black");
+        fill("yellow");
 
-        //Displays X and Y coordinate Text
-        textSize(8) //Sets Size of the text
-        text("X: " + this.tileX + ", Y: " + this.tileY, this.xPos + xPadding, this.yPos + yCoordinatePadding)
+        //Display X and Y coordinate text
+        textSize(8);
+        text("X: " + this.tileX + ", Y: " + this.tileY, this.xPos + xPadding, this.yPos + yCoordinatePadding);
 
-        //Displays tileID text
-        textSize(10) //Sets Size of the text
-        text("ID: " + this.tileID, this.xPos + xPadding, this.yPos + yIDPadding)
+        //Display tileID text
+        textSize(10);
+        text("ID: " + this.tileID, this.xPos + xPadding, this.yPos + yIDPadding);
 
-        //Create rect around title
+        //Create rect around tile
         noFill();
-        stroke('yellow'); //Sets outline colour
-        rect(this.xPos, this.yPos, this.tileSize, this.tileSize)
+        stroke('yellow');
+        rect(this.xPos, this.yPos, this.tileSize, this.tileSize);
     }
 
-  
-    
+    displayMessage() {
+        
+    }
 }
 
-class Player{
+class Player {
     constructor(sprite, startX, startY, tileSize, tileRules) {
-        //PLAYER SPRITES
-        this.sprite = sprite;
-
-        //TILE POSITION DATA
-        this.tileX = startX,
-        this.tileY = startY,
-
-        //PIXEL POSITION DATA
-        this.xPos = startX * tileSize;
-        this.yPos = startY * tileSize;
-
-        //DIRECTION PLAYER WANTS TO MOVE
-        this.dirX = 0;
-        this.dirY = 0;
-
-        //PLAYER'S TARGET PIXEL POSITION
-        this.tx = this.xPos;
-        this.ty = this.yPos;
-
-        //MOVEMENT
-        this.isMoving = false;
-        this.speed = 5;
-
-        //TILE DATA
-        this.tileSize = tileSize;
-        this.tilesRules = tileRules;
+        this.sprite = sprite; //PLAYER SPRITE
+        this.tileX = startX; //TILE POSITION DATA
+        this.tileY = startY; //TILE POSITION DATA
+        this.xPos = startX * tileSize; //PIXEL POSITION DATA
+        this.yPos = startY * tileSize; //PIXEL POSITION DATA
+        this.dirX = 0; //DIRECTION PLAYER WANTS TO MOVE
+        this.dirY = 0; //DIRECTION PLAYER WANTS TO MOVE
+        this.tx = this.xPos; //PLAYER'S TARGET PIXEL POSITION
+        this.ty = this.yPos; //PLAYER'S TARGET PIXEL POSITION
+        this.isMoving = false; //MOVEMENT
+        this.speed = 5; //MOVEMENT
+        this.tileSize = tileSize; //TILE DATA
+        this.tilesRules = tileRules; //TILE DATA
     }
-
-    display(){
-        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize);
-    }
-
 
     setDirection() {
-        let up = 87; //W
-        let down = 83 //S
-        let left = 65; //A
-        let right = 68; //D
+        //Variables for the keycode for keyIsDown
+        let up = 87;    // W
+        let down = 83;  // S
+        let left = 65;  // A
+        let right = 68; // D
 
-        if (!this.isMoving) { //CHECKS IF PLAYER IS MOVING, IF NOT, CODE BELOW RUNS.
-
-            if (keyIsDown(up)) {
+        if (!this.isMoving) {  //Checks if player is currently moving
+            
+            if (keyIsDown(up)) { //If player is not moving this code runs
                 this.dirX = 0;
                 this.dirY = -1;
-            }
-
-            if(keyIsDown(down)) {
+            } if (keyIsDown(down)) { //If player is not moving this code runs
                 this.dirX = 0;
                 this.dirY = 1;
-            }
-
-            if(keyIsDown(left)) {
+            } if (keyIsDown(left)) {   //If player is not moving this code runs
                 this.dirX = -1;
                 this.dirY = 0;
-            }
-
-            if(keyIsDown(right)) {
+            } if (keyIsDown(right)) { //If player is not moving this code runs
                 this.dirX = 1;
                 this.dirY = 0;
             }
-
-            this.checkTargetTile()
-
+            this.checkTargetTile(); //Checks if player can move to the next tile, based on direction and tileRules
         }
     }
 
     checkTargetTile() {
-        //Calculate tile position of current tile
-        this.tileX = Math.floor(this.xPos / this.tileSize);
-        this.tileY = Math.floor(this.yPos / this.tileSize);
+        this.tileX = Math.floor(this.xPos / this.tileSize); //Calculates tile position of currentTile
+        this.tileY = Math.floor(this.yPos / this.tileSize); //Calculates tile position of currentTile
 
-        //Calculates the tile coordinates of the next tile
-        let nextTileX = this.tileX + this.dirX;
-        let nextTileY = this.tileY + this.dirY;
+        let nextTileX = this.tileX + this.dirX; //Calculates tile coordinates of next Tile
+        let nextTileY = this.tileY + this.dirY; //Calculates tile coordinates of next Tile
 
-
-        if (nextTileX >= 0 &&  //Left side of the map
-            nextTileX < tilesX &&  //Right side of the map
-            nextTileY >= 0 &&  //Top of the map
-            nextTileY < tilesY) {  //Bottom of the map
-
-                //Checks if next tile is walkable
-                if (tilesRules[nextTileY][nextTileX] != 1) {  //!= means its not walkable
-
-                    //If walkable, set tx and 
-                    this.tx = nextTileX * tileSize;
-                    this.ty = nextTileY * tileSize;
-
-
-                    this.isMoving = true;
-                }
+        //Checks if nextTileX and nextTileY are both inbounds
+        if (nextTileX >= 0 &&      //Left side of map
+            nextTileX < tilesX &&  //Right side of map
+            nextTileY >= 0 &&      //Top of map
+            nextTileY < tilesY) {  //Bottom of map
+            
+                if (this.tilesRules[nextTileY][nextTileX] != 1) { //Checks if next tile is walkable (!= means NOT EQUIVALENT TO)
+                this.tx = nextTileX * this.tileSize; //If walkable set tx and ty (pixel positions)
+                this.ty = nextTileY * this.tileSize; //If walkable set tx and ty (pixel positions)
+                
+                this.isMoving = true; //If isMoving is true, start movement
             }
+        }
     }
 
-    move() {  //Move function created within the player class
-
+    move() {
         if (this.isMoving) {
+            this.xPos += this.speed * this.dirX; //This code will only activate when this.isMoving = true, otherwise nothing happens
+            this.yPos += this.speed * this.dirY; //This code will only activate when this.isMoving = true, otherwise nothing happens
 
-            this.xPos += this.speed * this.dirX;
-            this.yPos += this.speed * this.dirY;
-
-
-            if (this.xPos === this.tx && this.yPos === this.ty) {
-
+            //This checks if player has reached target
+            if (this.xPos === this.tx && this.yPos === this.ty) { //=== means true EQUIVALANCE
                 this.isMoving = false;
                 this.dirX = 0;
                 this.dirY = 0;
@@ -266,7 +214,7 @@ class Player{
         }
     }
 
-    
-
-  
+    display() {
+        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize); //Displays the sprite on the screen
+    }
 }
