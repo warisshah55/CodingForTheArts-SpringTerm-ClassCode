@@ -219,8 +219,54 @@ class Player{
             this.checkTargetTile()
 
         }
-            
-        
-
     }
+
+    checkTargetTile() {
+        //Calculate tile position of current tile
+        this.tileX = Math.floor(this.xPos / this.tileSize);
+        this.tileY = Math.floor(this.yPos / this.tileSize);
+
+        //Calculates the tile coordinates of the next tile
+        let nextTileX = this.tileX + this.dirX;
+        let nextTileY = this.tileY + this.dirY;
+
+
+        if (nextTileX >= 0 &&  //Left side of the map
+            nextTileX < tilesX &&  //Right side of the map
+            nextTileY >= 0 &&  //Top of the map
+            nextTileY < tilesY) {  //Bottom of the map
+
+                //Checks if next tile is walkable
+                if (tilesRules[nextTileY][nextTileX] != 1) {  //!= means its not walkable
+
+                    //If walkable, set tx and 
+                    this.tx = nextTileX * tileSize;
+                    this.ty = nextTileY * tileSize;
+
+
+                    this.isMoving = true;
+                }
+            }
+    }
+
+    move() {  //Move function created within the player class
+
+        if (this.isMoving) {
+
+            this.xPos += this.speed * this.dirX;
+            this.yPos += this.speed * this.dirY;
+
+
+            if (this.xPos === this.tx && this.yPos === this.ty) {
+
+                this.isMoving = false;
+                this.dirX = 0;
+                this.dirY = 0;
+            }
+        }
+    }
+
+    
+
+  
 }
