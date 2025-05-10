@@ -67,7 +67,7 @@ function setup() {
         }
     }
     
-    player = new Player(playerSprite, 3, 3, tileSize, tilesRules); //Creates the player
+    player = new Player(playerSprite, 0, 0, tileSize, tilesRules); //Creates the player
 }
 
 function draw() {
