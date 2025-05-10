@@ -28,7 +28,7 @@ let graphicsMap = [
 
 let tilesRules = [
 //          Y VALUES
-//   0  1  2  3  4  5  6  7  8  9
+//0  1  2  3  4  5  6  7  8  9
 [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], // 0
 [0, 1, 0, 0, 1, 1, 1, 1, 0, 0], // 1
 [0, 1, 1, 1, 0, 0, 0, 0, 1, 0], // 2
@@ -48,6 +48,10 @@ function preload() {
     textures[1] = loadImage("lava.png") //Loads "lava.png", the obstruction
 
     playerSprite = loadImage("heatblast.png") //Loads the "heatblast.png" sprite
+    SlimeBallSprite = loadImage("slimeball.png");
+
+   
+    
 }
 
 function setup() {
@@ -68,6 +72,9 @@ function setup() {
     }
     
     player = new Player(playerSprite, 0, 0, tileSize, tilesRules); //Creates the player
+
+    
+    
 }
 
 function draw() {
@@ -83,10 +90,10 @@ function draw() {
     player.move(); //Moves player where allowed
     player.display(); //Displays the sprite
 
-    tileMap[5][6].displayMessage();
-    tileMap[0][8].displayMessage();
-    tileMap[3][4].displayMessage();
-    tileMap[3][0].displayMessage();
+    
+    
+
+   
 }
 
 //CLASSES
@@ -216,5 +223,8 @@ class Player {
 
     display() {
         image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize); //Displays the sprite on the screen
+
+    
     }
+
 }
