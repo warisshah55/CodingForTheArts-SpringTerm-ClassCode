@@ -51,7 +51,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(500,500); //Creates a canvas that is 500x500 pixels
+    createCanvas(500,500); //Creates a canvas that is 500x500 pixels#
 
     //Creates all tiles
     let tileID = 0 //Gives unique ID for each tile
