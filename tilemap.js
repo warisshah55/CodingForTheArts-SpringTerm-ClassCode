@@ -72,6 +72,7 @@ function setup() {
     }
     
     player = new Player(playerSprite, 0, 0, tileSize, tilesRules); //Creates the player
+    SlimeBall = new NPC(SlimeBallSprite, 6, 3, tileSize, tilesRules);
 
     
     
@@ -89,6 +90,8 @@ function draw() {
     player.setDirection(); //Set direction based on WASD keys
     player.move(); //Moves player where allowed
     player.display(); //Displays the sprite
+
+    SlimeBall.display();
 
     
     
@@ -226,5 +229,20 @@ class Player {
 
     
     }
+}
 
+class NPC {
+    constructor(sprite, startX, startY, tileSize, tileRules) {
+        this.sprite = sprite;
+        this.tileX = startX;
+        this.tileY = startY;
+        this.xPos = startX * tileSize;
+        this.yPos = startY * tileSize;
+        this.tileSize = tileSize;
+        this.tileRules = tileRules;
+    }
+
+    display() {
+        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize);
+    }
 }
