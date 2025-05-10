@@ -48,7 +48,7 @@ function preload() {
     textures[1] = loadImage("lava.png") //Loads "lava.png", the obstruction
 
     playerSprite = loadImage("heatblast.png") //Loads the "heatblast.png" sprite
-    SlimeBallSprite = loadImage("slimeball.png");
+    SlimeBallSprite = loadImage("slimeball.png"); //Loads "slimeball.png" sprite
 
    
     
@@ -72,7 +72,7 @@ function setup() {
     }
     
     player = new Player(playerSprite, 0, 0, tileSize, tilesRules); //Creates the player
-    SlimeBall = new NPC(SlimeBallSprite, 6, 3, tileSize, tilesRules);
+    SlimeBall = new NPC(SlimeBallSprite, 6, 3, tileSize, tilesRules); //Creates NPC
 
     
     
@@ -91,7 +91,7 @@ function draw() {
     player.move(); //Moves player where allowed
     player.display(); //Displays the sprite
 
-    SlimeBall.display();
+    SlimeBall.display(); //Displays slimeball npc
 
     
     
@@ -158,8 +158,8 @@ class Player {
         this.ty = this.yPos; //PLAYER'S TARGET PIXEL POSITION
         this.isMoving = false; //MOVEMENT
         this.speed = 5; //MOVEMENT
-        this.tileSize = tileSize; //TILE DATA
-        this.tilesRules = tileRules; //TILE DATA
+        this.tileSize = tileSize; //TILE SIZE DATA
+        this.tilesRules = tileRules; //TILE RULES DATA
     }
 
     setDirection() {
@@ -233,16 +233,16 @@ class Player {
 
 class NPC {
     constructor(sprite, startX, startY, tileSize, tileRules) {
-        this.sprite = sprite;
-        this.tileX = startX;
-        this.tileY = startY;
-        this.xPos = startX * tileSize;
-        this.yPos = startY * tileSize;
-        this.tileSize = tileSize;
-        this.tileRules = tileRules;
+        this.sprite = sprite; //NPC SPRITE
+        this.tileX = startX; //TILE POSITION DATA
+        this.tileY = startY; //TILE POSITION DATA
+        this.xPos = startX * tileSize; //PIXEL POSITION DATA
+        this.yPos = startY * tileSize; //PIXEL POSITION DATA
+        this.tileSize = tileSize; //TILE SIZE DATA
+        this.tileRules = tileRules; //TILE RULES DATA
     }
 
     display() {
-        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize);
+        image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize); //Displays slimeBall NPC
     }
 }
