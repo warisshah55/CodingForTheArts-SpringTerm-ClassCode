@@ -87,14 +87,19 @@ function draw() {
         }
     }
 
-    player.setDirection(); //Set direction based on WASD keys
-    player.move(); //Moves player where allowed
+    
+    
+    if (!dialogueActive) {
+        player.setDirection(); //Set direction based on WASD keys
+        player.move(); //Moves player where allowed
+    }
+   
+    
+    
     player.display(); //Displays the sprite
-
     SlimeBall.display(); //Displays slimeball npc
 
-    
-    
+    drawDialogueBox();
 
 }
 
@@ -168,7 +173,7 @@ class Player {
         let left = 65;  // A
         let right = 68; // D
 
-        if (!this.isMoving) {  //Checks if player is currently moving
+        if (!this.isMoving && !dialogueActive) {  //Checks if player is currently moving
             
             if (keyIsDown(up)) { //If player is not moving this code runs
                 this.dirX = 0;
@@ -219,6 +224,15 @@ class Player {
                 this.isMoving = false;
                 this.dirX = 0;
                 this.dirY = 0;
+
+                let playerTileX = this.xPos / this.tileSize;
+                let playerTileY = this.yPos / this.tileSize;
+
+                if (playerTileX === 0 &&
+                    playerTileY === 3 &&
+                    !dialogueTriggered) {
+                        startDialogue();
+                }
             }
         }
     }
