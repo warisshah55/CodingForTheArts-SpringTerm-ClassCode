@@ -29,6 +29,14 @@ function drawDialogueBox() {
     }
 }
 
-
+function keyIsDown() {
+    if (dialogueActive && 
+        key === '') {
+        currentDialogueIndex++;
+        if (currentDialogueIndex >= dialogueLines.length) {
+            dialogueActive = false;
+        }
+    }
+}
 
 
