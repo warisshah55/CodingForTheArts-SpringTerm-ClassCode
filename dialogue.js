@@ -2,4 +2,9 @@
 
 let dialogueActive = false;
 let dialogueTriggered = false;
-let dialogueIndex = 0;
+let dialogueCurrentIndex = 0;
+
+let dialogueLines = [
+
+    
+]
