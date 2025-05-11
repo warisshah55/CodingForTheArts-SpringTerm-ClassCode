@@ -17,3 +17,18 @@ function startDialogue() {
     currentDialogueIndex = 0;
 }
 
+function drawDialogueBox() {
+    if (dialogueActive) {
+        fill(0, 0, 0, 200);
+        rect(0, height - 100, width, 100);
+
+        fill(255);
+        textSize(16);
+        textAlign(LEFT, TOP);
+        text(dialogueLines[currentDialogueIndex], 20, height - 30);
+    }
+}
+
+
+
+
