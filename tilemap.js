@@ -99,7 +99,7 @@ function draw() {
     player.display(); //Displays the sprite
     SlimeBall.display(); //Displays slimeball npc
 
-    drawDialogueBox();
+    drawDialogueBox(); //Creates the dialogue box
 
 }
 
@@ -173,7 +173,7 @@ class Player {
         let left = 65;  // A
         let right = 68; // D
 
-        if (!this.isMoving && !dialogueActive) {  //Checks if player is currently moving
+        if (!this.isMoving && !dialogueActive) {  //Checks if player is currently moving and if the dialogue is active
             
             if (keyIsDown(up)) { //If player is not moving this code runs
                 this.dirX = 0;
