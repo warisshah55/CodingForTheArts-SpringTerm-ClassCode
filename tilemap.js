@@ -99,6 +99,12 @@ function draw() {
     player.display(); //Displays the sprite
     SlimeBall.display(); //Displays slimeball npc
 
+    if (player.tileX === SlimeBall.tileX &&
+        player.tileY === SlimeBall.tileY) {
+            alert("YOU MELTED! GAME OVER!");
+            location.reload();
+        }
+
     drawDialogueBox(); //Creates the dialogue box
 
 }
@@ -253,7 +259,39 @@ class NPC {
         this.yPos = startY * tileSize; //PIXEL POSITION DATA
         this.tileSize = tileSize; //TILE SIZE DATA
         this.tileRules = tileRules; //TILE RULES DATA
+
+        setInterval(() => this.moveRandom(), 1000)
+
+
+        
     }
+
+    moveRandom() {
+        const directions = [
+            { dx: 0, dy: -1 },
+            { dx: 0, dy: 1 },
+            { dx: -1, dy: 0 },
+            { dx: 1, dy: 0 }
+        ];
+
+        const move = random(directions);
+        const newX = this.tileX + move.dx;
+        const newY = this.tileY + move.dy;
+
+        if (newX >= 0 &&
+            newX < tilesX &&
+            newY >= 0 &&
+            newY < tilesY &&
+            this.tileRules[newY][newX] !== 1) {
+
+                this.tileX = newX;
+                this.tileY = newY;
+                this.xPos = newX * this.tileSize;
+                this.yPos = newY * this.tileSize;
+        }
+    }
+
+
 
     display() {
         image(this.sprite, this.xPos, this.yPos, this.tileSize, this.tileSize); //Displays slimeBall NPC
