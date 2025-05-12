@@ -1,59 +1,75 @@
-#README file
 
-This is the readme file for your project. You should use the template below to write your own readme file.
-You should delete all lowercase text below and replace it with your own writing. You should include all
-titles below (indicated by being all-caps) but you should remove the rest of the text and replace with
-your own. The lower-case text suggests how you might focus your response to each section, but is only
-a suggestion. The key thing is to ensure you conform to the demands of the assessment and marking criteria 
-uploaded to Moodle. You are welcome to include additional titles and text as you desire beyond these.
 
-A copy of this can be found on notion here: https://hughdeleuzer.notion.site/ReadMe-File-Template-190c92fdf1c680d3a3cfc06f349aff28?pvs=4
+PROJECT NAME: HEATBLAST'S SAGA
 
----------------------------------------------------------------------------------------------------------
+BY- Waris Shah
+CANDIDATE NUMBER- 2511368
+ 
 
-PROJECT NAME: insert your project name here
-
-BY (team name)
-MEMBERS: (List of Members + Candidate Numbers) 
-
-LINK TO GITHUB REPO: [insert link here]
-LINK TO GITHUB PAGES: [insert link here]
+LINK TO GITHUB REPO: https://github.com/warisshah55/CodingForTheArts-SpringTerm-ClassCode/commits?author=warisshah55
+LINK TO GITHUB PAGES: https://github.com/warisshah55/CodingForTheArts-SpringTerm-ClassCode
 
 OVERVIEW OF PROJECT
-Describe your project in a few sentences. What is it about? What are its key technical features? 
-What are its key themes, aesthetics, etc.
+This project is a tile-based game which features a character named "HeatBlast", who you follow on a journey,
+navigating him through a nature biome filled with obstacles and a non playable character enemy named "SlimeBall".
+HeatBlast moves through the game world avoiding dangers such as lava while interactive elements cause you to
+speak to the NPC SlimeBall, who moves around the map trying to capture and kill HeatBlast.
+
 
 INDIVIDUAL CONTRIBUTION
-Each team members should write a detailed explanation of their individual contribution to the project.
-Be specific: 50% of your mark will be based on your individual contributions, so your marker needs to
-know exactly what you contributed. Explain your process and how you went about it. What research did
-you do? How did you implement your contributions into the project? What challenges did you face? How did
-you overcome these challenges (note: realising that it would be beyond the scope of your project is
-not a failure! Explain what you did instead to keep in scope. Balancing your ambitions versus the
-practical possibilities within the time and technical constraints is a key skill here!). This should be
-detailed and clear, and include *any* contribution you made to the project.
+For this project, as I was working on my own, my primary concern was the code itself. Trying to maintain neat and precise code over
+other elements such as artwork made me develop my understanding on the core mechanics greatly.
+Some of the important responsibility's i took up while creating the game involved-
+
+The Core Mechanics- Setting up the basic structure for the tile-based game included implementing a system where each type of tile could
+have its own unique properties. For example the lava tile within my game made it so that the player's movement was constrained
+based on the tile not being "walkable". I created a grid system using an array and variables such as "GraphicsMap"
+and "tilesRules" to define the layout and behaviour of each tile. With an additional "tile" class which ensured each tile had the 
+correct texture and displayed neccessary information like the "tileID" and coordinates. One challenge I faced was the display of the tiles,
+as whenever I would run the code there would be black boarders around the tiles (as in the game), spacing them out rather than having them together
+which would've aided to make the map look like one rather than many tiles.
+
+Player movement and interaction- I implemented HeatBlast's movement controls using the WASD keys and ensured that the player can only move on
+walkable tiles. The player's movement was pixel based, so I had to take in to consideration both tile and pixel positions which is Heatblast's
+location and how it translates visually on the canvas. I created a player class for HeatBlast which helped to store and manage the state of the player
+(movement, direction and position). Using the checkTargetTile() and move() methods, I was able to sucessfully manipulate the characters moving and setting
+direction while checking if the players reached a valid target tile. The challenge I faced was making sure the player moved smoothly
+from one tile to another. I found that without calculating tile and pixel coordinates correctly, I wasn't able to make sure once a player reached its target 
+tile that it would stop movement completely and will trigger the dialogue aspect.
+
+NPC's behaviour- One of my most key tasks was implementing SlimeBall's logic. This involved random movement and collision detection with the obstruction and with
+HeatBlast itself. Like the player class, I created an NPC class to manage the NPC's sprite, position and random movement. The setInterval() function helped me a lot
+with this as it allowed me to control how fast or slow SlimeBall's random movement could've been, and then let me check if SlimeBall's position was within
+the set boundaries and whether the next tiles were walkable or not.
+
+Dialogue system- I also worked on a dialogue system, which was triggered when the player would hit a specific tile on the grid. I integrated a method in the player class
+that checks if the player has touched the tile on coordinates (0, 3), that the startDialogue() function is called to begin conversation. I created a dialogue box which appears
+on the bottom of the screen with a press === spacebar to continue message. This is what challenged me the most as at first the conversation wouldn't progress, however the flag
+(dialogueTriggered) aided in preventing multiple triggers and that dialogue was controlled by the user input (===).
+
+Overall, my work focuses on creating the core gameplay mechanics, ensuring smooth movement, random NPC behaviour and handling tile interactions, all while solving technical challenges
+as I went on, adapting to the project's scope.
+
 
 THEMES
-Discuss the main themes of your PROJECT and how you approached communicating them through the project. 
-Remember: the module is called 'coding for the arts', so think about how you approached expressing 
-your ideas through the technical aspects of the project!
+The character's were designed with the purpose to exaggerate traits. HeatBlast, as a powerful hero character, and on the contrary, SlimeBall, a cheeky character, displaying slimy,
+mischevious traits. This contrast builds on the themes of satire and humour, reflecting the playful dynamics of the game itself. Additionally if HeatBlast collides with SlimeBall,
+the game resets with an alert message, "YOU MELTED! GAME OVER!" The irony of SlimeBall being practically already melted "goo" captures the essence of a playful conflict,
+where failure is more part of the fun as opposed to a frustrating setback. The collision detection is implemented through coordinate comparison.
+The player's current tile position is compared to the NPC's to trigger the game over. I used "if" statements to show how logic can be applied to game development.
 
-DESIGN
-Discuss the overall mechanical aspects of the project. Think about how it connects with your themes
-above if you did not already cover it there. You should also discuss how your design was informed by your
-understanding of the technical systems that you were taught in class (and particular those required by
-the assessment brief).
+The overall game design is based on object-oriented programming which was taught in the notion link. Use of classes helps encapsulates different aspects of the game like enviroment
+and NPC behaviours. This approach simplifies the management of the code, helping to code in a more maintainable and scalable way.
+Overall, the mechanical design of the project reflects a balanced approach of creative expression and technical implementations. The tile based movement and dynamic nature of the game
+provides a humourous, yet still challenging enviroment. Using techniques taught in class like arrays, functions and methods I am able to develop my code beyond what was taught in class
+and use code to create artwork.
 
-AESTHETIC DIMENSIONS
-As a group, how did you ensure parity between the aesthetic, technical and thematic demands of the
-project? Again, think about how your artistic and/or aesthetic choices were informed by your understanding
-of the technical systems of the project.
+If I had more time, as I was working independantly, I had major issues with adding a second level. Everytime I would add a second set of GraphicsMap and tilesRules I would be hit with a 
+blank screen when running my code even though I would refactor correctly, something would always go wrong with the loadLevel() function.
+If I had more time or a group to work with, my wish for this game was to make it so its something different every level. I had plans to keep the first level as it is
+and when you go to the next level it will be like an online rock, paper, scissors where you (HeatBlast) are against SlimeBall and the leveks after all being fun mini games where a rivalry is
+created for the user against the NPC.
 
-UNREALISED ASPECTS OF PROJECT
-Discuss here any aspects of the project you would have included if you had more time. Think about technical
-issues you had and how you might go about trying to fix them (or how you'd start the research process) if
-time and scope allowed. What other mechanics or ideas would you have implemented with more time? How would you
-have gone about implementing these?
 
-You may include more titles and text if you desire beyond the above titles if you want. Put them here at the bottom.
-You may, for instance, want to include a narrative section if story is particularly important to your project.
+
+
