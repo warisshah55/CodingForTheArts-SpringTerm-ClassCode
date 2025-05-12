@@ -99,10 +99,10 @@ function draw() {
     player.display(); //Displays the sprite
     SlimeBall.display(); //Displays slimeball npc
 
-    if (player.tileX === SlimeBall.tileX &&
-        player.tileY === SlimeBall.tileY) {
-            alert("YOU MELTED! GAME OVER!");
-            location.reload();
+    if (player.tileX === SlimeBall.tileX && //Checks if HeatBlast and SlimeBall are on the same tile (horizontally)
+        player.tileY === SlimeBall.tileY) { //Checks if HeatBlast and SlimeBall are on the same tile (vertically)
+            alert("YOU MELTED! GAME OVER!"); //Message alert you get when there is a collision between player and NPC
+            location.reload(); //Once collision is made and alert has happened, this refreshes the game, starting it again
         }
 
     drawDialogueBox(); //Creates the dialogue box
@@ -260,34 +260,34 @@ class NPC {
         this.tileSize = tileSize; //TILE SIZE DATA
         this.tileRules = tileRules; //TILE RULES DATA
 
-        setInterval(() => this.moveRandom(), 1000)
+        setInterval(() => this.moveRandom(), 600) //Starts random movement loop (set to 600 for faster pace)
 
 
         
     }
 
     moveRandom() {
-        const directions = [
-            { dx: 0, dy: -1 },
-            { dx: 0, dy: 1 },
-            { dx: -1, dy: 0 },
-            { dx: 1, dy: 0 }
+        const directions = [ 
+            { dx: 0, dy: -1 }, // UP
+            { dx: 0, dy: 1 },  // DOWN
+            { dx: -1, dy: 0 }, // LEFT
+            { dx: 1, dy: 0 }   // RIGHT
         ];
 
-        const move = random(directions);
+        const move = random(directions); //Chooses random directions for NPC to move
         const newX = this.tileX + move.dx;
         const newY = this.tileY + move.dy;
 
-        if (newX >= 0 &&
+        if (newX >= 0 &&  //Makes sure tile is on the map (walkable)
             newX < tilesX &&
-            newY >= 0 &&
+            newY >= 0 &&  //Makes sure tile is on the map (walkable)
             newY < tilesY &&
-            this.tileRules[newY][newX] !== 1) {
+            this.tileRules[newY][newX] !== 1) { //Makes sure next tile is walkable (not lava) (HAS TO BE DONE BACKWARDS, tileY THEN tileX)
 
-                this.tileX = newX;
-                this.tileY = newY;
-                this.xPos = newX * this.tileSize;
-                this.yPos = newY * this.tileSize;
+                this.tileX = newX; //TILE POSITION DATA
+                this.tileY = newY; // TILE POSITION DATA
+                this.xPos = newX * this.tileSize; //PIXEL POSITION DATA
+                this.yPos = newY * this.tileSize; //PIXEL POSITION DATA
         }
     }
 
